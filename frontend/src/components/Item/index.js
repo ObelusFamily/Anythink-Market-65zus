@@ -8,7 +8,7 @@ import {
   ITEM_PAGE_LOADED,
   ITEM_PAGE_UNLOADED,
 } from "../../constants/actionTypes";
-import placholderImg from '../../imgs/placeholder.png';
+import placholderImg from "../../imgs/placeholder.png";
 
 const mapStateToProps = (state) => ({
   ...state.item,
@@ -32,7 +32,7 @@ class Item extends React.Component {
   }
 
   render() {
-    const {currentUser,item, comments, commentErrors, match}=this.props;
+    const { currentUser, item, comments, commentErrors, match } = this.props;
     if (!item) {
       return null;
     }
@@ -40,17 +40,18 @@ class Item extends React.Component {
     const markup = {
       __html: marked(item.description, { sanitize: true }),
     };
-    
+
     const canModify =
-      currentUser &&
-      currentUser.username === item.seller.username;
+      currentUser && currentUser.username === item.seller.username;
     return (
       <div className="container page" id="item-container">
         <div className="text-dark">
           <div className="row bg-white p-4">
             <div className="col-6">
               <img
-                src={item.image && item.image !== ''?item.image:placholderImg}
+                src={
+                  item.image && item.image !== "" ? item.image : placholderImg
+                }
                 alt={item.title}
                 className="item-img"
                 style={{ height: "500px", width: "100%", borderRadius: "6px" }}
